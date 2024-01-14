@@ -6,18 +6,21 @@ import router from "@/router";
 import UserService from "@/services/user.service";
 
 export const useAuthStore = defineStore("auth", {
-    state: () => ({ isLogged: false, token: "" }),
+    state: () => ({ 
+        isLogged: false,
+        token: "", 
+        user: {}
+    }),
     getters: {
     //   doubleCount: (state) => state.count * 2,
     },
     actions: {
-        init() {
+        async init() {
             console.log("hello1");
             this.token = localStorage.getItem("authToken") ?? "";
             if (this.token) {
                 axios.defaults.headers.common["Authorization"] = "Bearer " + this.token;
-                console.log("hello");
-                UserService.getCurrentUser();
+                this.user = await UserService.getCurrentUser();
             }
         },
 
