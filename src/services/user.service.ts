@@ -24,7 +24,7 @@ export default class UserService {
             postalCode: user.postalCode || null,
             isVerified: user.isVerified || false,
         };
-        console.log(currentUser);
+        // console.log(currentUser);
         return currentUser;
     };
 }

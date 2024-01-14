@@ -1,4 +1,3 @@
-import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import AuthService from "@/services/auth.service";
 import axios from "axios";
@@ -7,16 +6,14 @@ import UserService from "@/services/user.service";
 
 export const useAuthStore = defineStore("auth", {
     state: () => ({ 
-        isLogged: false,
         token: "", 
         user: {}
     }),
     getters: {
-    //   doubleCount: (state) => state.count * 2,
+        isLogged: (state) => state.token ? true : false,
     },
     actions: {
         async init() {
-            console.log("hello1");
             this.token = localStorage.getItem("authToken") ?? "";
             if (this.token) {
                 axios.defaults.headers.common["Authorization"] = "Bearer " + this.token;
@@ -29,6 +26,7 @@ export const useAuthStore = defineStore("auth", {
                 .then((response) => {
                     localStorage.setItem("authToken", response.data.token);
                     router.push("/");
+                    this.init();
                 })
                 .catch((error) => {
                     console.error(error);
@@ -37,6 +35,7 @@ export const useAuthStore = defineStore("auth", {
         
         logout() {
             localStorage.removeItem("authToken");
+            this.token = "";
             router.push("/");
         }
     },
