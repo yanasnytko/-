@@ -13,7 +13,6 @@
                 <label for="confirmPassword">Confirm Password:</label>
                 <input type="password" id="confirmPassword" v-model="confirmPassword" required />
 
-                <!-- New fields for registration -->
                 <label for="addressStreet">Street Address:</label>
                 <input type="text" id="addressStreet" v-model="addressStreet" />
 
@@ -23,8 +22,6 @@
                 <label for="type">Type:</label>
                 <input type="radio" name="type" value="customer" id="customer" v-model="type" >
                 <input type="radio" name="type" value="provider" id="provider" v-model="type">
-
-                <!-- Add any other fields you added to the User entity -->
 
                 <a @click="step++; console.log(type)">Continue</a>
                 
@@ -41,14 +38,11 @@
                 <label for="confirmPassword">Confirm Password:</label>
                 <input type="password" id="confirmPassword" v-model="confirmPassword" required />
 
-                <!-- New fields for registration -->
                 <label for="addressStreet">Street Address:</label>
                 <input type="text" id="addressStreet" v-model="addressStreet" />
 
                 <label for="addressNumber">Address Number:</label>
                 <input type="text" id="addressNumber" v-model="addressNumber" />
-
-                <!-- Add any other fields you added to the User entity -->
 
                 <a @click="step++">Continue</a>
             </form>
@@ -64,14 +58,11 @@
                 <label for="confirmPassword">Confirm Password:</label>
                 <input type="password" id="confirmPassword" v-model="confirmPassword" required />
 
-                <!-- New fields for registration -->
                 <label for="addressStreet">Street Address:</label>
                 <input type="text" id="addressStreet" v-model="addressStreet" />
 
                 <label for="addressNumber">Address Number:</label>
                 <input type="text" id="addressNumber" v-model="addressNumber" />
-
-                <!-- Add any other fields you added to the User entity -->
 
                 <a @click="step++">Continue</a>
             </form>
@@ -99,18 +90,15 @@ export default {
         register() {
             const authStore = useAuthStore();
             
-            // Perform registration logic, you may want to add validation and error handling
             if (this.password === this.confirmPassword) {
                 authStore.register({
                     email: this.email,
                     password: this.password,
                     addressStreet: this.addressStreet,
-                    addressNumber: this.addressNumber,
-                    // Add any other fields you added to the User entity
+                    addressNumber: this.addressNumber
                 });
             } else {
-                // Handle password mismatch error
-                console.error("Password and Confirm Password must match");
+                console.error("Les mots de passe doivent correspondre");
             }
         }
     }
@@ -125,5 +113,4 @@ export default {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-/* Add or modify styles as needed for the registration form */
 </style>
