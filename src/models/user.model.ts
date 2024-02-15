@@ -11,6 +11,6 @@ interface User {
     tryCount: number | null;
     enabled: boolean | null;
     confirmed: boolean | null;
-    postalCode: string | null;
+    postalCode: PostalCode | null;
     isVerified: boolean | null;
 }

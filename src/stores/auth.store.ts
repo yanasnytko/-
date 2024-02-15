@@ -3,6 +3,7 @@ import AuthService from "@/services/auth.service";
 import axios from "axios";
 import router from "@/router";
 import UserService from "@/services/user.service";
+import {useToast} from "vue-toast-notification";
 
 export const useAuthStore = defineStore("auth", {
     state: () => ({ 
@@ -29,6 +30,7 @@ export const useAuthStore = defineStore("auth", {
                     this.init();
                 })
                 .catch((error) => {
+                    useToast().error("Your login or password is wrong!");
                     console.error(error);
                 });
         },
