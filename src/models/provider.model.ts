@@ -1,4 +1,5 @@
 interface Provider extends User {
+    id: number;
     providerName: string | null;
     webSite: string | null;
     phoneNumber: string | null;

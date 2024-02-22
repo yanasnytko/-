@@ -5,6 +5,8 @@ import RegisterViewVue from "@/views/RegisterView.vue";
 import ServiceCategoryViewVue from "@/views/ServiceCategoryView.vue";
 import { useAuthStore } from "@/stores/auth.store";
 import AllServiceCategoryVue from "@/components/AllServiceCategory.vue";
+import AllProvidersVue from "@/components/AllProviders.vue";
+import ProviderViewVue from "@/views/ProviderView.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +46,16 @@ const router = createRouter({
             path: "/services_category/:id",
             name: "service",
             component: ServiceCategoryViewVue
+        },
+        {
+            path: "/providers/",
+            name: "providers",
+            component: AllProvidersVue
+        },
+        {
+            path: "/providers/:id",
+            name: "provider",
+            component: ProviderViewVue
         }
     ]
 });

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>
-            Nous n'avons rien trouvé :( <br />
+            Nous n'avons rien trouvé : <br />
             Ce {{ name }} n'existe pas !
         </h2>
     </div>
